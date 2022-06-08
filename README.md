@@ -1,5 +1,8 @@
 # cash-register
 
+## environment
+
+JDK8+
 
 ## data
 
