@@ -14,8 +14,9 @@ public class OrderGoods {
     private String barcode;
     private Double quantity;
     private String unit;
-    private Boolean promotion;                          //goods Whether or not join promotion
-    private PromotionType type;                         //promotion
+    private Promotion promotion;
+    private Boolean boolPromotion;                      //goods Whether or not join promotion
+    private PromotionType type;                         //promotion type
     private Double discount;                            //promotion discount
     private Integer reward;                             //x for free
     private BigDecimal price;
@@ -71,13 +72,20 @@ public class OrderGoods {
         this.amount = amount;
     }
 
-
-    public Boolean getPromotion() {
+    public Promotion getPromotion() {
         return promotion;
     }
 
-    public void setPromotion(Boolean promotion) {
+    public void setPromotion(Promotion promotion) {
         this.promotion = promotion;
+    }
+
+    public Boolean getBoolPromotion() {
+        return boolPromotion;
+    }
+
+    public void setBoolPromotion(Boolean boolPromotion) {
+        this.boolPromotion = boolPromotion;
     }
 
     public PromotionType getType() {

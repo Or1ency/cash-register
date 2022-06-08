@@ -9,6 +9,7 @@ public class RewardGoods {
     private String barcode;
     private Integer quantity;
     private String unit;
+    private Promotion promotion;
 
     public String getName() {
         return name;
@@ -40,5 +41,13 @@ public class RewardGoods {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public Promotion getPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(Promotion promotion) {
+        this.promotion = promotion;
     }
 }

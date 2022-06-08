@@ -1,6 +1,7 @@
 package main;
 
 import domain.Order;
+import domain.Promotion;
 import enums.PromotionType;
 
 import java.math.BigDecimal;
@@ -11,6 +12,9 @@ import java.text.DecimalFormat;
  * Created by Oriency on 2022/6/7.
  */
 public class Printer {
+
+    private static final char[] CHN = {'一', '二', '三', '四', '五', '六', '七', '八', '九'};
+    private static final char[] STD = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
     private String title = "***<没钱赚商店>购物清单***";
     private String split = "----------------------";
@@ -60,6 +64,7 @@ public class Printer {
         printTotal();
         //print end
         System.out.println(this.endSplit);
+        System.out.println();
     }
 
     private void printGoodsInfo() {
@@ -75,7 +80,7 @@ public class Printer {
                             .append(quantity).append(orderGoods.getUnit()).append(",").append("单价:")
                             .append(orderGoods.getPrice()).append("(元),").append("小计:").append(orderGoods.getAmount())
                             .append("(元)");
-                    if (null != orderGoods.getPromotion() && orderGoods.getPromotion()
+                    if (null != orderGoods.getBoolPromotion() && orderGoods.getBoolPromotion()
                             && orderGoods.getType().equals(PromotionType.DISCOUNT)) {
                         stringBuilder.append(",").append("节省").append(orderGoods.getDiscountAmount()).append("(元)");
                     }
@@ -95,7 +100,15 @@ public class Printer {
 
     private void printGoodsPromotion() {
         if (null != order.getRewards() && order.getRewards().size() > 0) {
-            System.out.println("买二赠一商品:");
+            Promotion promotion = order.getRewards().get(0).getPromotion();
+            String buyNumStr = promotion.getPurchase().toString();
+            String rewardNumStr = promotion.getReward().toString();
+            for (int j = 0; j < STD.length; j++) {
+                buyNumStr = buyNumStr.replace(STD[j], CHN[j]);
+                rewardNumStr = rewardNumStr.replace(STD[j], CHN[j]);
+            }
+            String str = String.format("买%1$s赠%2$s商品:", buyNumStr, rewardNumStr);
+            System.out.println(str);
             order.getRewards().forEach(
                     reward -> {
                         String stringBuilder = "名称:" + reward.getName() + "," + "数量:" +
