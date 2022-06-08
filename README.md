@@ -35,13 +35,13 @@ it's design exactly as the homework.pdf
 
 ## run/debug
 
-####step 1. 
+#### step 1. 
 new Mock to initialize basic data such as goods info
-####step 2. 
+#### step 2. 
 new Cashier
-####step 3. 
+#### step 3. 
 set data into Cashier
-####step 4.
+#### step 4.
 random or appoint parameters for mock promotion or barcode (see config)
-####step 5.
+#### step 5.
 run or debug Cashier.main()
