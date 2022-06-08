@@ -23,11 +23,13 @@ public class Cashier {
     }
 
     public static void main(String[] args) {
+        //step 1. new Mock to initialize basic data such as goods info
         MockData mockData = new MockData();
         //测试随机产生模拟数据是否出错
         testMockData(mockData, 10000);
-        //Cashier data initial
+        //step 2. new Cashier
         Cashier cashier = new Cashier();
+        //step 3. set data into cashier
         cashier.GOODS_MAP = mockData.goodsMap();
         /*
          * 随机模拟购买场景
